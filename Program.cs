@@ -20,6 +20,10 @@ namespace pokergame
             string num;
             //文字列から数字への変換判定
             bool result ;
+            //継続判定
+            int next = 0;
+            string Next;
+
 
             while (true)
             {
@@ -86,12 +90,39 @@ namespace pokergame
                 }
 
 
-                break;
+                while(true)
+                    {
+                    Console.Write("続けますか？ YES:1 NO:0＞");
+                    Next = Console.ReadLine();
+                    result = int.TryParse(Next, out next);
+                    if (result == true)
+                    {
+                        if (next == 1)
+                        {
+                            Console.WriteLine("継続!");
+                            break ;
+                        }
+                        else if (next == 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("再入力してください");
+                        }
+                    }
+                }
+                
+                if(next==0)
+                {
+                    break;
+                }
 
-
+               
 
             }
 
+            Console.WriteLine("Enterを押してください");
             Console.ReadLine();
         }
 
