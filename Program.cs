@@ -81,7 +81,7 @@ namespace pokergame
                     case 4:
                         Console.WriteLine("フルハウス!!!!!");
                         break;
-                        case 5:
+                    case 10:
                         Console.WriteLine("ファイブカード(存在なし)");
                         break;
                     case 6:
