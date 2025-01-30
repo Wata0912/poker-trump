@@ -24,6 +24,7 @@ namespace pokergame
             int next = 0;
             string Next;
 
+            bool straight = false;
 
             while (true)
             {
@@ -67,7 +68,39 @@ namespace pokergame
                 switch(count)
                 {
                     case 0:
-                        Console.WriteLine("訳なし");
+                        //カードの最大値と最小値を求め、差が4の時にストレートの判定を出す
+                        int max = cards.Max(card => card & 0x0F);
+                        int min = cards.Min(card => card & 0x0F);
+                        if (max - min <= 4)
+                        {
+                            // ストレート成立
+                            straight = true;
+                            Console.WriteLine("ストレート!!!!!");
+
+                            
+                        }
+                        else
+                        {
+                            if (straight == false)
+                            {
+                                //1を14にしてロイヤルストレートの判定
+                                int Lmax = cards.Max(card => ((card & 0x0F) == 1) ? 14 : (card & 0x0F));
+                                int Lmin = cards.Min(card => ((card & 0x0F) == 1) ? 14 : (card & 0x0F));
+
+                                if (Lmax - Lmin <= 4)
+                                {
+                                    // ロイヤルストレート成立
+                                    Console.WriteLine("ロイヤルストレート!!!!!");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("役なし");
+                            }
+                               
+                        }
+
+                        
                         break;
                     case 1:
                         Console.WriteLine("ワンペア!");
